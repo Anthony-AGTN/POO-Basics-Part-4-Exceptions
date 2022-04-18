@@ -14,6 +14,14 @@ echo $car->forward();
 var_dump($car);
 var_dump(Car::ALLOWED_ENERGIES);
 
+/*Capture l'erreur avec try lors de l'appel à la start() sur une instance de Car.*/
+try {
+    $car->start();
+} catch (Exception $th) {
+    $car->setParkBrake(); //Si une exception est attrapée dans le bloc catch, gère le cas en modifiant l'état du frein à main.
+} finally {
+    echo "Ma voiture roule comme un donut"; //Envoie le message “Ma voiture roule comme un donut”, quel que soit le comportement avec finally.
+}
 
 require_once('Truck.php');
 
